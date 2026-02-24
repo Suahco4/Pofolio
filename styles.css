@@ -1,15 +1,17 @@
 /* Global Styles */
 :root {
-  --bg-color: #0f172a;
-  --bg-alt: #0b1220;
-  --accent: #f59e0b;
+  --bg-color: #020617;       /* Very dark blue background */
+  --bg-alt: #020617;         /* Alternate section background */
+  --primary-blue: #1d4ed8;   /* Main blue */
+  --accent: #f97316;         /* Orange accent */
+  --accent-soft: #fdba74;    /* Softer orange */
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
-  --card-bg: #111827;
-  --border-color: #1f2933;
+  --card-bg: #020617;
+  --border-color: #1f2937;
   --error: #f97373;
   --success: #22c55e;
-  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.7);
+  --shadow-soft: 0 15px 35px rgba(15, 23, 42, 0.75);
 }
 
 *,
@@ -42,23 +44,31 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.35);
 }
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 0;
+  padding: 0.7rem 0;
 }
 
-/* Empty logo placeholder */
+/* Logo placeholder */
 .logo {
   display: flex;
   align-items: center;
   min-height: 32px;
+}
+
+/* Control logo size */
+.logo img {
+  height: 42px;     /* Adjust to make the logo larger/smaller */
+  width: auto;
+  max-width: 180px;
+  display: block;
 }
 
 /* Navigation */
@@ -107,28 +117,46 @@ body {
   border-radius: 999px;
 }
 
-/* Hero Section */
+/* Hero Banner */
 .hero {
-  padding: 4rem 0 3rem;
+  position: relative;
+  padding: 5rem 0 4rem;
+  color: #f9fafb;
+  overflow: hidden;
+  background-image:
+    linear-gradient(120deg, rgba(15, 23, 42, 0.95), rgba(29, 78, 216, 0.88)),
+    url("hero-banner.jpg"); /* Put hero-banner.jpg in the same folder (optional) */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.35), transparent 55%);
+  pointer-events: none;
 }
 
 .hero-content {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
   gap: 2.5rem;
   align-items: center;
+  z-index: 1;
 }
 
 .hero-greeting {
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 0.18em;
-  color: var(--accent);
+  color: var(--accent-soft);
   margin-bottom: 0.5rem;
 }
 
 .hero-name {
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(2.4rem, 4.3vw, 3.2rem);
   margin: 0.1rem 0 0.6rem;
   letter-spacing: 0.03em;
 }
@@ -138,16 +166,16 @@ body {
 }
 
 .hero-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: #d1fae5;
   margin-bottom: 1.2rem;
 }
 
 .hero-description {
   font-size: 0.98rem;
   line-height: 1.7;
-  color: var(--text-muted);
+  color: #e5e7eb;
   max-width: 34rem;
   margin-bottom: 1.5rem;
 }
@@ -162,15 +190,19 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.65rem 1.5rem;
+  padding: 0.65rem 1.6rem;
   border-radius: 999px;
   font-size: 0.9rem;
   font-weight: 500;
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
-    transform 0.1s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn:active {
@@ -178,9 +210,9 @@ body {
 }
 
 .primary-btn {
-  background: linear-gradient(135deg, #f97316, #fbbf24);
+  background: linear-gradient(135deg, #f97316, #facc15);
   color: #111827;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 15px 30px rgba(248, 113, 22, 0.55);
 }
 
 .primary-btn:hover {
@@ -189,8 +221,8 @@ body {
 
 .secondary-btn {
   background: transparent;
-  color: var(--text-main);
-  border-color: rgba(148, 163, 184, 0.6);
+  color: #e5e7eb;
+  border-color: rgba(191, 219, 254, 0.6);
 }
 
 .secondary-btn:hover {
@@ -199,10 +231,10 @@ body {
 }
 
 .hero-card {
-  background-color: var(--card-bg);
+  background: rgba(15, 23, 42, 0.9);
   border-radius: 1rem;
-  padding: 1.5rem 1.6rem;
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 1.6rem 1.7rem;
+  border: 1px solid rgba(191, 219, 254, 0.45);
   box-shadow: var(--shadow-soft);
 }
 
@@ -223,7 +255,7 @@ body {
 }
 
 .hero-card a {
-  color: var(--accent);
+  color: var(--accent-soft);
   text-decoration: none;
 }
 
@@ -234,10 +266,11 @@ body {
 /* Generic Sections */
 .section {
   padding: 3.5rem 0;
+  background: var(--bg-color);
 }
 
 .alt-bg {
-  background: var(--bg-alt);
+  background: radial-gradient(circle at top left, rgba(29, 78, 216, 0.23), transparent 50%), #020617;
 }
 
 .section-header {
@@ -275,10 +308,10 @@ body {
 }
 
 .about-details {
-  background: var(--card-bg);
-  padding: 1.4rem 1.5rem;
+  background: radial-gradient(circle at top left, rgba(29, 78, 216, 0.35), transparent 55%);
+  padding: 1.5rem 1.6rem;
   border-radius: 0.9rem;
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid rgba(59, 130, 246, 0.7);
 }
 
 .about-details h3 {
@@ -306,7 +339,7 @@ body {
 }
 
 .about-details a {
-  color: var(--accent);
+  color: var(--accent-soft);
   text-decoration: none;
 }
 
@@ -327,9 +360,9 @@ body {
   height: 220px;
   border-radius: 999px;
   overflow: hidden;
-  border: 2px solid rgba(245, 158, 11, 0.7);
+  border: 3px solid rgba(249, 115, 22, 0.9);
   box-shadow: var(--shadow-soft);
-  background: radial-gradient(circle at 30% 30%, #1f2937, #020617);
+  background: radial-gradient(circle at 30% 30%, #1e40af, #020617);
 }
 
 .photo-frame img {
@@ -353,11 +386,11 @@ body {
 }
 
 .card {
-  background: var(--card-bg);
-  border-radius: 0.85rem;
-  padding: 1.4rem 1.5rem;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.45);
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), #020617);
+  border-radius: 0.9rem;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid rgba(59, 130, 246, 0.6);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.75);
 }
 
 .card h3 {
@@ -409,7 +442,7 @@ body {
 }
 
 .contact-info a {
-  color: var(--accent);
+  color: var(--accent-soft);
   text-decoration: none;
 }
 
@@ -424,10 +457,10 @@ body {
 
 /* Form Styles */
 .contact-form {
-  background: var(--card-bg);
-  padding: 1.5rem 1.6rem;
+  background: radial-gradient(circle at top left, rgba(29, 78, 216, 0.25), #020617);
+  padding: 1.6rem 1.7rem;
   border-radius: 0.9rem;
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  border: 1px solid rgba(59, 130, 246, 0.7);
 }
 
 .form-group {
@@ -445,19 +478,20 @@ body {
   width: 100%;
   padding: 0.55rem 0.7rem;
   border-radius: 0.5rem;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  background-color: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background-color: rgba(15, 23, 42, 0.9);
   color: var(--text-main);
   font-size: 0.9rem;
   font-family: inherit;
   outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.5);
+  background-color: #020617;
 }
 
 .error-message {
@@ -476,7 +510,7 @@ body {
 
 /* Footer */
 .main-footer {
-  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  border-top: 1px solid rgba(30, 64, 175, 0.7);
   padding: 1rem 0 1.2rem;
   background-color: #020617;
 }
@@ -495,6 +529,7 @@ body {
 
   .hero-card {
     max-width: 420px;
+    margin-top: 1.2rem;
   }
 
   .about-grid,
@@ -516,7 +551,7 @@ body {
     background: #020617;
     padding: 0.7rem 1rem;
     border-radius: 0.7rem;
-    border: 1px solid rgba(148, 163, 184, 0.4);
+    border: 1px solid rgba(59, 130, 246, 0.8);
     display: none;
   }
 
@@ -527,7 +562,7 @@ body {
 
 @media (max-width: 480px) {
   .hero {
-    padding-top: 3rem;
+    padding-top: 4rem;
   }
 
   .header-content {
@@ -547,15 +582,4 @@ body {
     width: 180px;
     height: 180px;
   }
-}
-.logo {
-  display: flex;
-  align-items: center;
-  min-height: 32px;
-}
-.logo img {
-  height: 40px;      /* Change this value to make the logo bigger/smaller */
-  width: auto;       /* Keeps the correct proportions */
-  max-width: 180px;  /* Prevents very wide logos from stretching */
-  display: block;
 }
