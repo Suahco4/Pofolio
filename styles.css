@@ -628,3 +628,26 @@ body {
 .social-links a i {
   font-size: 1rem;   /* Adjust bigger/smaller if you like */
 }
+.project-meta {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+  margin-bottom: 0.7rem;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.project-links .btn {
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+}
+
+.project-links .btn i {
+  margin-right: 0.35rem;
+  font-size: 0.9rem;
+}
