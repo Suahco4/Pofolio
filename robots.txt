@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace with the actual URL to your sitemap once it is created.
+Sitemap: https://suahco4.online/sitemap.xml

@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emmanuel Suah | Programmer & Church Organist</title>
+  <meta name="description" content="Personal portfolio for Emmanuel Suah, a programmer and church organist based in Brewerville, Liberia. Explore projects that combine technology and music." />
+
+  <meta property="og:description" content="Personal portfolio for Emmanuel Suah, a programmer and church organist based in Brewerville, Liberia. Explore projects that combine technology and music." />
+  <meta name="twitter:description" content="Personal portfolio for Emmanuel Suah, a programmer and church organist based in Brewerville, Liberia. Explore projects that combine technology and music." />
+
+  <!-- Canonical URL: Fixes "Trailing slash" and "Accessible index page" issues. Replace with your real domain. -->
+  <link rel="canonical" href="https://your-actual-domain.com/" />
 
   <!-- Google Font (optional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,9 +18,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
+  <!-- Performance: Preload hero image for faster loading (LCP) -->
+  <link rel="preload" as="image" href="hero-banner.jpg" />
+
+  <!-- Performance: Load FontAwesome asynchronously to unblock rendering -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+      crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="shortcut icon" href="/favicon.ico" />
@@ -22,11 +35,15 @@
 <link rel="manifest" href="/site.webmanifest" />
 </head>
 <body>
+  <!-- Decorative Firefly -->
+  <div class="firefly"></div>
+
   <!-- Header / Navigation -->
   <header class="main-header">
     <div class="container header-content">
       <div class="logo">
-        <img src="logo.png" alt="Emmanuel Suah Logo">
+        <!-- Performance: Add width/height to prevent layout shifts -->
+        <img src="logo.png" alt="Emmanuel Suah Logo" width="150" height="50">
       </div>
       <nav class="main-nav" aria-label="Main navigation">
         <button class="nav-toggle" aria-label="Toggle navigation">
@@ -42,6 +59,10 @@
   <li><a href="#occupations">Occupations</a></li>
   <li><a href="#contact">Contact</a></li>
 </ul>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light and dark mode">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
       </nav>
     </div>
   </header>
@@ -59,7 +80,7 @@
           technology and music to create solutions and meaningful worship experiences.
         </p>
         <div class="hero-actions">
-          <a href="#occupations" class="btn primary-btn">View My Work</a>
+          <a href="#occupations" class="btn primary-btn">What I Do</a>
           <a href="#contact" class="btn secondary-btn">Contact Me</a>
         </div>
       </div>
@@ -76,10 +97,10 @@
       </div>
     </div>
   </section>
-  <a href="#projects" class="btn primary-btn">View My Work</a>
+  <a href="#projects" class="btn primary-btn">View My Project</a>
 
   <!-- About Section -->
-  <section id="about" class="section">
+  <section id="about" class="section fade-in-section">
     <div class="container">
       <div class="section-header">
         <h2>About Me</h2>
@@ -113,7 +134,7 @@
   </section>
 
   <!-- Photo Section -->
-  <section id="photo" class="section alt-bg">
+  <section id="photo" class="section alt-bg fade-in-section">
     <div class="container">
       <div class="section-header">
         <h2>My Photo</h2>
@@ -122,19 +143,14 @@
 
       <div class="photo-wrapper">
         <div class="photo-frame">
-          <!-- Replace "your-photo.jpg" with your own photo file name -->
-          <img src="gemini-3-pro-image-preview (nano-banana-pro)_a_Design_my_photo_beau.png" alt="Photo of Emmanuel Suah" id="profile-photo">
+          <!-- Performance: Added loading="lazy" and dimensions -->
+          <img src="gemini-3-pro-image-preview (nano-banana-pro)_a_Design_my_photo_beau.jpg" alt="Photo of Emmanuel Suah" id="profile-photo" loading="lazy" width="400" height="500">
         </div>
-        <!--<p class="photo-note">
-          To change this photo, put your picture in the same folder as this file and replace
-          <code>your-photo.jpg</code> with your file name.
-        </p>-->
       </div>
     </div>
   </section>
-  <!-- Projects Section -->
 <!-- Projects Section -->
-<section id="projects" class="section alt-bg">
+<section id="projects" class="section alt-bg fade-in-section">
   <div class="container">
     <div class="section-header">
       <h2>Some of My Projects</h2>
@@ -143,57 +159,82 @@
 
     <div class="cards-grid">
       <!-- Project 1: Grade Calculator -->
-      <article class="card">
-        <h3>Grade Calculator</h3>
-        <p>
-          An application that helps students or teachers quickly calculate grades
-          based on scores, making it easier to track academic performance.
-        </p>
-        <p class="project-meta">Tech: HTML, CSS, JavaScript (or your stack)</p>
-        <div class="project-links">
-          <!-- Replace # with your real project link -->
-          <a href="https://grade-calculator-suahco4.vercel.app" class="btn secondary-btn" target="_blank" rel="noopener">
-            <i class="fa-solid fa-eye"></i><span>View</span>
-          </a>
+      <div class="flip-card" tabindex="0">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-calculator flip-card-icon"></i>
+            <h3>Grade Calculator</h3>
+            <p class="flip-card-hint">Hover for details</p>
+          </div>
+          <div class="flip-card-back">
+            <h3>Grade Calculator</h3>
+            <p>
+              An application that helps students or teachers quickly calculate grades
+              based on scores, making it easier to track academic performance.
+            </p>
+            <p class="project-meta">Tech: HTML, CSS, JavaScript</p>
+            <div class="project-links">
+              <a href="https://grade-calculator-suahco4.vercel.app" class="btn secondary-btn" target="_blank" rel="noopener">
+                <i class="fa-solid fa-eye"></i><span>View</span>
+              </a>
+            </div>
+          </div>
         </div>
-      </article>
+      </div>
 
       <!-- Project 2: School Progress Report -->
-      <article class="card">
-        <h3>School Progress Report</h3>
-        <p>
-          A system or page layout for generating and displaying student progress
-          reports in a clear and organized format.
-        </p>
-        <p class="project-meta">Tech: HTML, CSS, JavaScript (or your stack)</p>
-        <div class="project-links">
-          <!-- Replace # with your real project link -->
-          <a href="https://suahco4.github.io/progressReport" class="btn secondary-btn" target="_blank" rel="noopener">
-            <i class="fa-solid fa-eye"></i><span>View</span>
-          </a>
+      <div class="flip-card" tabindex="0">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-file-lines flip-card-icon"></i>
+            <h3>School Progress Report</h3>
+            <p class="flip-card-hint">Hover for details</p>
+          </div>
+          <div class="flip-card-back">
+            <h3>School Progress Report</h3>
+            <p>
+              A system or page layout for generating and displaying student progress
+              reports in a clear and organized format.
+            </p>
+            <p class="project-meta">Tech: HTML, CSS, JavaScript</p>
+            <div class="project-links">
+              <a href="https://suahco4.github.io/progressReport" class="btn secondary-btn" target="_blank" rel="noopener">
+                <i class="fa-solid fa-eye"></i><span>View</span>
+              </a>
+            </div>
+          </div>
         </div>
-      </article>
+      </div>
 
       <!-- Project 3: Prime Excellence Daycare School Computer Game -->
-      <article class="card">
-        <h3>Prime Excellence Daycare School Computer Game</h3>
-        <p>
-          An educational computer game designed for young children at Prime
-          Excellence Daycare School, making learning fun and interactive.
-        </p>
-        <p class="project-meta">Tech: (Add the technologies you used here)</p>
-        <div class="project-links">
-          <!-- Replace # with your real project link -->
-          <a href="https://suahco4.github.io/Game" class="btn secondary-btn" target="_blank" rel="noopener">
-            <i class="fa-solid fa-eye"></i><span>View</span>
-          </a>
+      <div class="flip-card" tabindex="0">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-gamepad flip-card-icon"></i>
+            <h3>Daycare Game</h3>
+            <p class="flip-card-hint">Hover for details</p>
+          </div>
+          <div class="flip-card-back">
+            <h3>Daycare Game</h3>
+            <p>
+              An educational computer game designed for young children at Prime
+              Excellence Daycare School, making learning fun and interactive.
+            </p>
+            <p class="project-meta">Tech: HTML, CSS, JS</p>
+            <div class="project-links">
+              <a href="https://suahco4.github.io/Game" class="btn secondary-btn" target="_blank" rel="noopener">
+                <i class="fa-solid fa-eye"></i><span>View</span>
+              </a>
+            </div>
+          </div>
         </div>
-      </article>
+      </div>
     </div>
   </div>
 </section>
   <!-- Occupations Section -->
-  <section id="occupations" class="section">
+
+  <section id="occupations" class="section fade-in-section">
     <div class="container">
       <div class="section-header">
         <h2>What I Do</h2>
@@ -232,7 +273,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="section alt-bg">
+  <section id="contact" class="section alt-bg fade-in-section">
     <div class="container">
       <div class="section-header">
         <h2>Contact Me</h2>
@@ -280,7 +321,10 @@
             <span class="error-message" data-for="message"></span>
           </div>
 
-          <button type="submit" class="btn primary-btn">Send Message</button>
+          <button type="submit" class="btn primary-btn">
+            <span class="btn-text">Send Message</span>
+            <span class="spinner"></span>
+          </button>
           <p id="form-status" class="form-status" aria-live="polite"></p>
         </form>
       </div>
@@ -313,6 +357,13 @@
   </div>
 </footer>
 
+  <!-- Scroll to Top Button -->
+  <button id="scroll-top" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+    <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

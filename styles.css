@@ -29,6 +29,7 @@ body {
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Utility */
@@ -45,8 +46,14 @@ body {
   top: 0;
   z-index: 100;
   background: rgba(2, 6, 23, 0.92);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(37, 99, 235, 0.35);
+  transition: transform 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.main-header.header-hidden {
+  transform: translateY(-100%);
 }
 
 .header-content {
@@ -100,6 +107,34 @@ body {
   border-color: var(--accent);
 }
 
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-left: 1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus {
+  color: var(--text-main);
+  border-color: var(--accent);
+  outline: none;
+}
+
+.theme-toggle-btn .fa-sun { display: none; }
+.light-mode .theme-toggle-btn .fa-sun { display: block; }
+.light-mode .theme-toggle-btn .fa-moon { display: none; }
+
 /* Mobile nav toggle */
 .nav-toggle {
   display: none;
@@ -115,6 +150,7 @@ body {
   height: 2px;
   background-color: var(--text-main);
   border-radius: 999px;
+  transition: background-color 0.3s ease;
 }
 
 /* Hero Banner */
@@ -129,6 +165,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  transition: color 0.3s ease;
 }
 
 .hero-overlay {
@@ -170,6 +207,7 @@ body {
   font-weight: 500;
   color: #d1fae5;
   margin-bottom: 1.2rem;
+  transition: color 0.3s ease;
 }
 
 .hero-description {
@@ -178,6 +216,7 @@ body {
   color: #e5e7eb;
   max-width: 34rem;
   margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
 }
 
 .hero-actions {
@@ -236,6 +275,7 @@ body {
   padding: 1.6rem 1.7rem;
   border: 1px solid rgba(191, 219, 254, 0.45);
   box-shadow: var(--shadow-soft);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-card h2 {
@@ -312,6 +352,7 @@ body {
   padding: 1.5rem 1.6rem;
   border-radius: 0.9rem;
   border: 1px solid rgba(59, 130, 246, 0.7);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .about-details h3 {
@@ -391,6 +432,7 @@ body {
   padding: 1.5rem 1.6rem;
   border: 1px solid rgba(59, 130, 246, 0.6);
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.75);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card h3 {
@@ -461,6 +503,7 @@ body {
   padding: 1.6rem 1.7rem;
   border-radius: 0.9rem;
   border: 1px solid rgba(59, 130, 246, 0.7);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .form-group {
@@ -513,6 +556,7 @@ body {
   border-top: 1px solid rgba(30, 64, 175, 0.7);
   padding: 1rem 0 1.2rem;
   background-color: #020617;
+  transition: background-color 0.3s ease, border-top-color 0.3s ease;
 }
 
 .footer-content {
@@ -553,10 +597,16 @@ body {
     border-radius: 0.7rem;
     border: 1px solid rgba(59, 130, 246, 0.8);
     display: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
   .nav-links.show {
     display: flex;
+  }
+
+  .theme-toggle-btn {
+    margin-left: 0.5rem;
+    order: 3; /* Ensure it's after the hamburger menu */
   }
 }
 
@@ -650,4 +700,247 @@ body {
 .project-links .btn i {
   margin-right: 0.35rem;
   font-size: 0.9rem;
+}
+
+/* Loading Spinner */
+.spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn.loading .spinner {
+  display: inline-block;
+}
+
+.btn.loading {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Scroll-triggered Animations */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------- */
+/* --- Light Mode --- */
+/* ------------------- */
+.light-mode {
+  --bg-color: #eef2f7;         /* Soft blue-gray background (slate-100) */
+  --bg-alt: #ffffff;           /* White for alternate sections */
+  --text-main: #1e293b;         /* Dark slate text (slate-800) */
+  --text-muted: #64748b;        /* Muted slate text (slate-500) */
+  --card-bg: #ffffff;           /* White cards */
+  --border-color: #e2e8f0;     /* Softer slate border (slate-200) */
+  --shadow-soft: 0 8px 20px rgba(30, 41, 59, 0.07); /* Softer shadow */
+}
+
+.light-mode .main-header {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom-color: var(--border-color);
+}
+
+.light-mode .nav-toggle .bar {
+  background-color: var(--text-main);
+}
+
+.light-mode .nav-links {
+  background: #ffffff;
+  border-color: var(--border-color);
+}
+
+.light-mode .hero {
+  background-image:
+    linear-gradient(120deg, rgba(238, 242, 247, 0.92), rgba(59, 130, 246, 0.85)),
+    url("hero-banner.jpg");
+  color: #1f2937;
+}
+
+.light-mode .hero-title {
+  color: var(--primary-blue);
+}
+
+.light-mode .hero-description {
+  color: #334155; /* slate-700 */
+}
+
+.light-mode .secondary-btn {
+  color: var(--text-main);
+  border-color: #94a3b8; /* slate-400 */
+}
+
+.light-mode .secondary-btn:hover {
+  color: var(--accent);
+}
+
+.light-mode .hero-card,
+.light-mode .card,
+.light-mode .about-details,
+.light-mode .contact-form {
+  background: #ffffff;
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-soft);
+}
+
+.light-mode .form-group input,
+.light-mode .form-group textarea {
+  background-color: #f8fafc; /* slate-50 */
+  border-color: var(--border-color);
+}
+
+.light-mode .form-group input:focus,
+.light-mode .form-group textarea:focus {
+  background-color: #ffffff;
+}
+
+.light-mode .main-footer {
+  border-top-color: var(--border-color);
+  background-color: #ffffff;
+}
+
+/* Scroll to Top Button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--primary-blue);
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 99;
+}
+
+.scroll-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* Flip Card Styles */
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  min-height: 300px; /* Ensure consistent height */
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  display: grid;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  grid-area: 1 / 1;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 0.9rem;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid rgba(59, 130, 246, 0.6);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flip-card-front {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), #020617);
+  align-items: center;
+  text-align: center;
+}
+
+.flip-card-back {
+  background: #020617;
+  transform: rotateY(180deg);
+  border-color: var(--accent);
+}
+
+.flip-card-icon {
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.flip-card-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* Light Mode Flip Card Overrides */
+.light-mode .flip-card-front,
+.light-mode .flip-card-back {
+  background: #ffffff;
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-soft);
+  color: var(--text-main);
+}
+
+.light-mode .flip-card-back {
+  background: #f8fafc; /* slate-50 */
+}
+
+/* Firefly Decoration */
+.firefly {
+  position: fixed;
+  left: -20px;
+  top: -20px;
+  width: 6px;
+  height: 6px;
+  background-color: #facc15;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 4px #facc15, 0 0 30px 10px rgba(250, 204, 21, 0.6);
+  z-index: 90;
+  pointer-events: none;
+  animation: firefly-float 5s ease-in-out infinite alternate;
+}
+
+@keyframes firefly-float {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  100% { transform: translate(-20px, 20px) scale(1.3); opacity: 1; }
 }
