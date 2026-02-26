@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emmanuel Suah | Programmer & Church Organist - suahco4.online</title>
+  <title>Emmanuel Suah - Programmer & Church Organist | Portfolio</title>
   <meta name="description" content="Personal portfolio for Emmanuel Suah, a programmer and church organist based in Brewerville, Liberia. Explore projects that combine technology and music." />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0HRQ76KCE5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0HRQ76KCE5');
+  </script>
 
   <meta property="og:title" content="Emmanuel Suah | Programmer & Church Organist" />
   <meta property="og:description" content="Personal portfolio for Emmanuel Suah, a programmer and church organist based in Brewerville, Liberia. Explore projects that combine technology and music." />
@@ -27,7 +37,7 @@
 
   <link rel="stylesheet" href="styles.css" />
   <!-- Performance: Preload hero image for faster loading (LCP) -->
-  <link rel="preload" as="image" href="hero-banner.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="hero-banner.jpg"/>
 
   <!-- Performance: Load FontAwesome asynchronously to unblock rendering -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -45,10 +55,36 @@
 <!-- Structured Data: Defines Site Name for Search Engines -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Emmanuel Suah",
-  "url": "https://suahco4.online/"
+  "@context": "https://schema.org/",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Emmanuel Suah's Portfolio",
+      "url": "https://suahco4.online/"
+    },
+    {
+      "@type": "Person",
+      "name": "Emmanuel Suah",
+      "url": "https://suahco4.online/",
+      "image": "https://suahco4.online/hero-banner.jpg",
+      "jobTitle": "Programmer & Church Organist",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brewerville City",
+        "addressRegion": "Montserrado County",
+        "addressCountry": "LR"
+      },
+      "email": "mailto:mr.suah19@gmail.com",
+      "telephone": "+231778662590",
+      "sameAs": [
+        "https://facebook.com/",
+        "https://wa.me/231778662590",
+        "https://youtube.com/",
+        "https://instagram.com/",
+        "https://www.tiktok.com/"
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -127,13 +163,10 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I am a dedicated programmer and church organist from Brewerville City,
-            Montserrado County, Liberia. I enjoy solving problems with technology and
-            serving in the church through music.
+            My journey is a unique blend of logic and melody, rooted in my home of Brewerville City, Liberia. As a programmer, I am driven by the challenge of building clean, efficient, and user-friendly applications. I find immense satisfaction in turning complex problems into simple, elegant solutions through code.
           </p>
           <p>
-            This website is a simple profile of my work and roles. You can customize this
-            text with more details about your experience, skills, and projects whenever you like.
+            Parallel to my passion for technology is my deep-seated love for music. As a church organist, I have the privilege of leading worship and supporting the congregation through the power of music. This role has taught me the importance of harmony, timing, and connecting with an audience on an emotional level—principles that I find surprisingly applicable to my work in programming. This portfolio is a window into how I merge these two worlds.
           </p>
         </div>
         <div class="about-details">
@@ -187,8 +220,7 @@
           <div class="flip-card-back">
             <h3>Grade Calculator</h3>
             <p>
-              An application that helps students or teachers quickly calculate grades
-              based on scores, making it easier to track academic performance.
+              A user-friendly tool built with vanilla JavaScript that allows students and educators to quickly calculate final grades. It features dynamic input fields for assignments and exams, weighted category calculations, and provides instant results to help track academic performance efficiently.
             </p>
             <p class="project-meta">Tech: HTML, CSS, JavaScript</p>
             <div class="project-links">
@@ -211,8 +243,7 @@
           <div class="flip-card-back">
             <h3>School Progress Report</h3>
             <p>
-              A system or page layout for generating and displaying student progress
-              reports in a clear and organized format.
+              A responsive HTML and CSS template designed to present student progress reports in a clean, professional, and easy-to-read format. This project focuses on clear data visualization and a print-friendly layout for school administrators and parents.
             </p>
             <p class="project-meta">Tech: HTML, CSS, JavaScript</p>
             <div class="project-links">
@@ -235,8 +266,7 @@
           <div class="flip-card-back">
             <h3>Daycare Game</h3>
             <p>
-              An educational computer game designed for young children at Prime
-              Excellence Daycare School, making learning fun and interactive.
+              An interactive educational game developed with HTML, CSS, and JavaScript for young learners. The game uses simple mechanics, colorful graphics, and positive reinforcement to teach basic concepts in a fun and engaging way, tailored for a daycare school environment.
             </p>
             <p class="project-meta">Tech: HTML, CSS, JS</p>
             <div class="project-links">
@@ -264,13 +294,12 @@
         <article class="card">
           <h3>Programmer</h3>
           <p>
-            As a programmer, I am interested in building clean, functional software and websites.
-            This can include:
+            My focus is on front-end web development, where I specialize in turning ideas into responsive and interactive digital experiences. I am proficient in core web technologies and always eager to learn more.
           </p>
           <ul>
-            <li>Designing and developing web pages</li>
-            <li>Writing clean, structured code</li>
-            <li>Solving technical problems and debugging</li>
+            <li><strong>Web Development:</strong> Building websites and applications using modern HTML, CSS, and JavaScript.</li>
+            <li><strong>Problem Solving:</strong> Analyzing challenges to find and implement robust, scalable solutions.</li>
+            <li><strong>Clean Code:</strong> Writing well-structured, maintainable code that follows best practices.</li>
           </ul>
         </article>
 
@@ -278,12 +307,12 @@
         <article class="card">
           <h3>Church Organist</h3>
           <p>
-            As a church organist, I support worship through music, such as:
+            Music is a core part of my life and service. My role as a church organist goes beyond simply playing notes; it's about creating an atmosphere for worship and reflection.
           </p>
           <ul>
-            <li>Playing hymns and worship songs</li>
-            <li>Accompanying choirs and congregational singing</li>
-            <li>Supporting church services and special events</li>
+            <li><strong>Worship Leadership:</strong> Selecting and playing hymns, preludes, and postludes that complement the service.</li>
+            <li><strong>Accompaniment:</strong> Providing a solid musical foundation for choirs, soloists, and the congregation.</li>
+            <li><strong>Musical Arrangement:</strong> Adapting pieces to suit the specific needs of a service or event.</li>
           </ul>
         </article>
       </div>
