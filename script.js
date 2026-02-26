@@ -79,11 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Parallax effect for hero banner
   const hero = document.querySelector('.hero');
-  if (hero) {
+  // Performance: Disable parallax on mobile (< 768px) to improve scroll score
+  if (hero && window.matchMedia("(min-width: 768px)").matches) {
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      const scrollPosition = window.scrollY;
-      // Move the background image at half the scroll speed for a parallax effect
-      hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          hero.style.backgroundPositionY = window.scrollY * 0.5 + 'px';
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
   }
 
@@ -237,7 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Firefly cursor follower
   const firefly = document.querySelector('.firefly');
-  if (firefly) {
+  // Performance: Only enable on devices with a mouse (hover capability)
+  if (firefly && window.matchMedia("(hover: hover)").matches) {
     let isMoving = false;
     document.addEventListener('mousemove', (e) => {
       if (!isMoving) {

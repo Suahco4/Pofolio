@@ -50,6 +50,7 @@ body {
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(37, 99, 235, 0.35);
   transition: transform 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+  will-change: transform;
 }
 
 .main-header.header-hidden {
@@ -668,12 +669,39 @@ body {
   background: linear-gradient(135deg, #f97316, #facc15);
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.7);
   transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  position: relative;
 }
 
 .social-links a:hover {
   transform: translateY(-1px);
   filter: brightness(1.05);
   box-shadow: 0 9px 18px rgba(15, 23, 42, 0.85);
+}
+
+/* Social Link Tooltips */
+.social-links a::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 135%; /* Position above the icon */
+  background-color: #1e293b; /* A dark slate color */
+  color: var(--text-main);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.social-links a:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-4px); /* Slight upward move */
 }
 .social-links a i {
   font-size: 1rem;   /* Adjust bigger/smaller if you like */

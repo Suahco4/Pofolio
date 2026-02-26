@@ -3,23 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emmanuel Suah | Programmer & Church Organist</title>
+  <title>Emmanuel Suah | Programmer & Church Organist - suahco4.online</title>
   <meta name="description" content="Personal portfolio for Emmanuel Suah, a programmer and church organist based in Brewerville, Liberia. Explore projects that combine technology and music." />
 
+  <meta property="og:title" content="Emmanuel Suah | Programmer & Church Organist" />
   <meta property="og:description" content="Personal portfolio for Emmanuel Suah, a programmer and church organist based in Brewerville, Liberia. Explore projects that combine technology and music." />
+  <meta property="og:image" content="https://suahco4.online/hero-banner.jpg" />
+  <meta property="og:url" content="https://suahco4.online/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Emmanuel Suah | Programmer & Church Organist" />
   <meta name="twitter:description" content="Personal portfolio for Emmanuel Suah, a programmer and church organist based in Brewerville, Liberia. Explore projects that combine technology and music." />
+  <meta name="twitter:image" content="https://suahco4.online/hero-banner.jpg" />
 
   <!-- Canonical URL: Fixes "Trailing slash" and "Accessible index page" issues. Replace with your real domain. -->
-  <link rel="canonical" href="https://suahco4.online" />
+  <link rel="canonical" href="https://suahco4.online/" />
 
   <!-- Google Font (optional) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
   <link rel="stylesheet" href="styles.css" />
   <!-- Performance: Preload hero image for faster loading (LCP) -->
-  <link rel="preload" as="image" href="hero-banner.jpg" />
+  <link rel="preload" as="image" href="hero-banner.jpg" fetchpriority="high" />
 
   <!-- Performance: Load FontAwesome asynchronously to unblock rendering -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -33,6 +41,16 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content="Emmanuel Suah" />
 <link rel="manifest" href="/site.webmanifest" />
+
+<!-- Structured Data: Defines Site Name for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Emmanuel Suah",
+  "url": "https://suahco4.online/"
+}
+</script>
 </head>
 <body>
   <!-- Decorative Firefly -->
@@ -43,7 +61,7 @@
     <div class="container header-content">
       <div class="logo">
         <!-- Performance: Add width/height to prevent layout shifts -->
-        <img src="logo.png" alt="Emmanuel Suah Logo" width="150" height="50">
+        <img src="logo.png" alt="Emmanuel Suah Logo" title="Emmanuel Suah Logo" width="150" height="50">
       </div>
       <nav class="main-nav" aria-label="Main navigation">
         <button class="nav-toggle" aria-label="Toggle navigation">
@@ -144,7 +162,7 @@
       <div class="photo-wrapper">
         <div class="photo-frame">
           <!-- Performance: Added loading="lazy" and dimensions -->
-          <img src="gemini-3-pro-image-preview (nano-banana-pro)_a_Design_my_photo_beau.jpg" alt="Photo of Emmanuel Suah" id="profile-photo" loading="lazy" width="400" height="500">
+          <img src="avatar.jpg" alt="Photo of Emmanuel Suah" title="Photo of Emmanuel Suah" id="profile-photo" loading="lazy" width="400" height="500">
         </div>
       </div>
     </div>
@@ -338,19 +356,19 @@
 
     <div class="social-links">
       <!-- Replace URLs with your real profile links -->
-      <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+      <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" data-tooltip="Facebook">
         <i class="fa-brands fa-facebook-f"></i>
       </a>
-      <a href="https://wa.me/231778662590" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <a href="https://wa.me/231778662590" target="_blank" rel="noopener" aria-label="WhatsApp" data-tooltip="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
       </a>
-      <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+      <a href="https://youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" data-tooltip="YouTube">
         <i class="fa-brands fa-youtube"></i>
       </a>
-      <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+      <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" data-tooltip="Instagram">
         <i class="fa-brands fa-instagram"></i>
       </a>
-      <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok">
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" data-tooltip="TikTok">
         <i class="fa-brands fa-tiktok"></i>
       </a>
     </div>
@@ -363,8 +381,7 @@
   </button>
 
     <!-- EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="script.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
-

@@ -1,2 +1,2 @@
-# Pofolio
-this is my personal pofolio
+# Portfolio
+This is my personal portfolio.
