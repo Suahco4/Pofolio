@@ -90,25 +90,3 @@ app.post('/api/lyrics', async (req, res) => {
         res.status(500).json({ error: 'Failed to add lyric' });
     }
 });
-
-// 3. Delete a lyric
-app.delete('/api/lyrics/:id', async (req, res) => {
-    if (!lyricsCollection) {
-        return res.status(503).json({ error: 'Database not connected' });
-    }
-    const { id } = req.params;
-
-    if (!ObjectId.isValid(id)) {
-        return res.status(400).json({ error: 'Invalid lyric ID format' });
-    }
-
-    try {
-        const result = await lyricsCollection.deleteOne({ _id: new ObjectId(id) });
-        if (result.deletedCount === 0) {
-            return res.status(404).json({ error: 'Lyric not found' });
-        }
-        res.json({ success: true });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to delete lyric' });
-    }
-});
