@@ -1,0 +1,73 @@
+EduResult Portal - User Guide
+===========================
+
+Welcome to the EduResult Portal, a comprehensive Student Report Card Platform designed for Liberia Excellence Academy. This system allows instructors to manage student grades and students to view their report cards online.
+
+1. GETTING STARTED
+------------------
+To start the application, simply open the "index.html" file located in the root folder in your web browser. This is the Landing Page.
+
+From the Landing Page, you can navigate to:
+- Student Portal: For students to check results.
+- Instructor Portal: For teachers/admins to manage grades.
+
+2. INSTRUCTOR PORTAL (ADMIN)
+----------------------------
+Location: admin/index.html
+Default Credentials:
+- Username: admin
+- Password: admin123
+
+Features:
+- Dashboard Overview: View total students, class average, and top performer stats.
+- Top 5 Performers: A widget to filter and view the top 5 students by class (e.g., 10th Grade).
+- Academic Year Configuration: Set the current academic year (e.g., "2023-2024"). This updates the header on all student report cards.
+- Student Management:
+  - Add New Student: Click "Add Student". The ID is auto-generated.
+  - Edit Student: Click "Edit" to modify details or enter grades.
+  - Delete Student: Remove a student record permanently.
+- Grade Entry:
+  - Supports 6 Periods (1st-3rd for Semester 1, 4th-6th for Semester 2).
+  - Grades can be entered partially (e.g., only Period 1). Empty fields are ignored in calculations.
+  - Flexible layout allowing easy data entry.
+
+3. STUDENT PORTAL
+-----------------
+Location: student/index.html
+
+How to Login:
+- Students must enter their exact "Student Name" and "Student ID" as created in the Admin Portal.
+- Example Default Login: "John Doe" (ID: 1001)
+
+Features:
+- Official Report Card: Displays school letterhead, student details, and academic year.
+- Detailed Grading Table:
+  - Shows grades for all 6 periods.
+  - Automatically calculates Period Averages, Semester Averages, and Yearly Average.
+- Visual Alerts: Any grade below 70 is highlighted in RED to indicate areas for improvement.
+- Print Ready: A "Print Report" button formats the page perfectly for physical printing.
+
+4. IMPORTANT NOTES
+------------------
+- Data Storage: This application uses your browser's Local Storage. This means:
+  - Data is saved automatically when you close the browser.
+  - You do NOT need a database server to run this.
+  - WARNING: If you clear your browser cache/history, the student data will be reset to defaults.
+- Grading Logic:
+  - Grades < 70 are Red.
+  - Missing grades appear as "-" and do not affect the average calculation.
+  - Yearly Average = (Semester 1 Average + Semester 2 Average) / 2.
+
+5. FOLDER STRUCTURE
+-------------------
+/ (Root)
+  - index.html (Landing Page)
+  - USER_GUIDE.txt (This file)
+  /admin
+    - index.html (Admin Interface)
+    - styles.css (Admin Styling)
+    - script.js (Admin Logic)
+  /student
+    - index.html (Student Interface)
+    - styles.css (Student Styling)
+    - script.js (Student Logic)

@@ -330,6 +330,30 @@ body {
   font-size: 0.95rem;
 }
 
+.section-footer {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.grid-status-message {
+  text-align: center;
+  color: var(--text-muted);
+  grid-column: 1 / -1;
+}
+
+.grid-status-message a {
+  color: var(--accent-soft);
+  text-decoration: none;
+}
+
+.grid-status-message a:hover {
+  text-decoration: underline;
+}
+
+.grid-status-message--error {
+  color: var(--error);
+}
+
 /* About Section */
 .about-grid {
   display: grid;
@@ -433,7 +457,23 @@ body {
   padding: 1.5rem 1.6rem;
   border: 1px solid rgba(59, 130, 246, 0.6);
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.75);
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border-radius: 0.9rem; /* Match card radius for focus outline */
+}
+
+.card-link:hover .card {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.85);
+}
+
+.light-mode .card-link:hover .card {
+  box-shadow: 0 12px 25px rgba(30, 41, 59, 0.1);
 }
 
 .card h3 {
@@ -459,6 +499,20 @@ body {
 .card li + li {
   margin-top: 0.25rem;
 }
+
+.lyric-preview-artist {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.lyric-preview-content {
+  white-space: pre-wrap;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
 
 /* Contact Section */
 .contact-grid {

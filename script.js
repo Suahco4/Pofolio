@@ -257,7 +257,60 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Fetch and display song lyrics preview
+  const lyricsPreviewGrid = document.getElementById('lyrics-preview-grid');
+  if (lyricsPreviewGrid) {
+    fetchLyricsPreview();
+  }
 });
+
+async function fetchLyricsPreview() {
+    const API_URL = 'https://pofolio-ck5d.onrender.com/api/lyrics';
+    const grid = document.getElementById('lyrics-preview-grid');
+
+    try {
+        const res = await fetch(API_URL);
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const allLyrics = await res.json();
+
+        // Clear loading message
+        grid.innerHTML = '';
+
+        if (allLyrics.length === 0) {
+            grid.innerHTML = '<p class="grid-status-message">No lyrics have been added yet. <a href="lyrics.html">Add one!</a></p>';
+            return;
+        }
+
+        // Take the first 3 lyrics for the preview
+        const lyricsToDisplay = allLyrics.slice(0, 3);
+
+        lyricsToDisplay.forEach(song => {
+            const linkWrapper = document.createElement('a');
+            linkWrapper.href = `lyrics.html#${song._id}`;
+            linkWrapper.className = 'card-link';
+            linkWrapper.title = `View full lyrics for "${song.title}"`;
+
+            const contentSnippet = song.content.split('\n').slice(0, 4).join('\n');
+            const needsEllipsis = song.content.split('\n').length > 4;
+
+            linkWrapper.innerHTML = `
+                <article class="card">
+                    <h3>${song.title}</h3>
+                    <p class="lyric-preview-artist">By ${song.artist || 'Unknown Artist'}</p>
+                    <div class="lyric-preview-content">${contentSnippet}${needsEllipsis ? '\n...' : ''}</div>
+                </article>
+            `;
+            grid.appendChild(linkWrapper);
+        });
+
+    } catch (error) {
+        console.error('Failed to fetch lyrics preview:', error);
+        grid.innerHTML = '<p class="grid-status-message grid-status-message--error">Could not load lyrics. Is the backend server running?</p>';
+    }
+}
 
 function setError(fieldName, message) {
   const errorSpan = document.querySelector(`.error-message[data-for="${fieldName}"]`);
