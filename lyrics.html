@@ -102,7 +102,7 @@
   <header class="main-header">
     <div class="container header-content">
       <div class="logo">
-        <a href="index.html"><img src="logo.jpg" alt="Emmanuel Suah Logo" width="150" height="50"></a>
+        <a href="index.html"><img src="logo.png" alt="Emmanuel Suah Logo" width="150" height="50"></a>
       </div>
       <nav class="main-nav">
         <ul class="nav-links">
@@ -276,10 +276,20 @@
         }
     });
 
+    // Delete Lyric
+    async function deleteLyric(id) {
+        if (!confirm('Are you sure you want to delete this song?')) return;
+        
+        try {
+            await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+            loadLyrics();
+        } catch (err) {
+            alert('Failed to delete');
+        }
+    }
+
     // Initial Load
     loadLyrics();
   </script>
 </body>
-
 </html>
-
