@@ -25,22 +25,29 @@ let lyricsCollection;
 app.use(cors());
 app.use(express.json()); // Parse JSON bodies
 
-// Connect to MongoDB
-MongoClient.connect(MONGODB_URI)
-    .then(client => {
-        console.log('Connected to MongoDB');
+const client = new MongoClient(MONGODB_URI);
+
+async function startServer() {
+    try {
+        // 1. Connect the client to the server
+        await client.connect();
+        console.log('Connected successfully to MongoDB');
+
+        // 2. Set up DB and collection variables
         db = client.db(DB_NAME);
         lyricsCollection = db.collection(COLLECTION_NAME);
 
+        // 3. Start the Express server
         app.listen(PORT, () => {
             console.log(`Lyrics Backend running at http://localhost:${PORT}`);
         });
-    })
-    .catch(error => {
+    } catch (error) {
         console.error('Failed to connect to MongoDB', error);
         process.exit(1);
-    });
+    }
+}
 
+startServer();
 // Routes
 
 // 1. Get all lyrics
