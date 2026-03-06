@@ -12,6 +12,12 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = 'portfolio'; // Or whatever you named your database
 const COLLECTION_NAME = 'lyrics';
 
+// Add a check to ensure the MongoDB URI is set in the environment
+if (!MONGODB_URI) {
+    console.error('FATAL ERROR: MONGODB_URI environment variable is not set. The application cannot start.');
+    process.exit(1); // Exit the process with an error code
+}
+
 let db;
 let lyricsCollection;
 
