@@ -359,5 +359,11 @@ You can call, send an email, or leave a message using the form. The form shows a
 </button>
 <script src=https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js defer></script>
 <script src=script.js defer></script>
+  <script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.onkeydown = e => {
+  if(e.key=='F12' || (e.ctrlKey && e.shiftKey && e.key=='I') || (e.ctrlKey && e.key=='u')) e.preventDefault();
+};
+</script>
 </body>
 </html>
