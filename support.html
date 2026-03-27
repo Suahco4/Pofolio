@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Receipt Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta property="og:title" content="Support - Receipt Generator">
+    <meta property="og:description" content="Need help with the Receipt Generator? Visit our support center for FAQs and contact information.">
+    <meta property="og:image" content="https://suahco4.online/pofolio-main/icon.png">
+    <meta property="og:url" content="https://suahco4.online/pofolio-main/support.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://suahco4.online/pofolio-main/icon.png">
+    <style>
+        :root { --primary: #3b82f6; --bg: #0f172a; --card-bg: #1e293b; --text: #f8fafc; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; }
+        .container { max-width: 800px; padding: 100px 20px; }
+        h1, h2 { color: var(--primary); font-weight: 700; margin-top: 2rem; }
+        .back-link { color: var(--text); text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: var(--primary); }
+        .support-card { background: var(--card-bg); border: 1px solid #334155; padding: 2rem; border-radius: 1rem; margin-top: 2rem; }
+        .contact-item { margin-bottom: 1.5rem; }
+        .contact-label { font-weight: 700; display: block; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; }
+        .contact-value { font-size: 1.25rem; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="Receipt Generator.html" class="back-link">← Back to App</a>
+        <h1 class="display-4 mb-4">Support Center</h1>
+        <p class="text-secondary lead">Need help with the Receipt Generator? We're here to assist you.</p>
+
+        <div class="support-card">
+            <div class="contact-item">
+                <span class="contact-label">Email Support</span>
+                <span class="contact-value"><a href="mailto:mr.suah19@gmail.com" class="text-white text-decoration-none">mr.suah19@gmail.com</a></span>
+            </div>
+            
+            <div class="contact-item">
+                <span class="contact-label">Phone & WhatsApp</span>
+                <span class="contact-value text-white">0778662590</span>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-label">Location</span>
+                <span class="contact-value text-white">Brewerville City, Liberia</span>
+            </div>
+        </div>
+
+        <section class="mt-5">
+            <h2>Common Questions</h2>
+            <div class="accordion accordion-flush mt-3" id="faqAccordion">
+                <div class="accordion-item bg-transparent border-secondary">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            How do I change the logo?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">Open the application, go to "School Information" on the left panel, and click "Select Logo". Supported formats include PNG, JPG, and GIF.</div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-transparent border-secondary">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Where are my PDFs saved?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-secondary">By default, you choose the location when exporting. You can quickly open the last used folder by clicking the "Open Folder" button in the Actions panel.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-5 pt-5 border-top border-secondary text-center text-secondary">
+            <p>&copy; 2026 Receipt Generator Tool.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
