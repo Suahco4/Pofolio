@@ -32,6 +32,33 @@
   <meta name="apple-mobile-web-app-title" content="Emmanuel Suah" />
   <link rel="manifest" href="site.webmanifest" />
 
+  <script>
+    (function() {
+      const style = document.createElement('style');
+      style.textContent = `
+        #security-overlay {
+          position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+          background: rgba(15, 23, 42, 0.95); color: #f8fafc; padding: 16px 32px;
+          border-radius: 12px; border: 1px solid #3b82f6; z-index: 100000;
+          display: none; pointer-events: none; font-family: system-ui, -apple-system, sans-serif;
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); text-align: center;
+        }
+        #security-overlay.show { display: block; animation: overlay-fade 2s forwards; }
+        @keyframes overlay-fade { 0% { opacity: 0; } 15%, 85% { opacity: 1; } 100% { opacity: 0; } }
+      `;
+      document.head.appendChild(style);
+      const div = document.createElement('div');
+      div.id = 'security-overlay';
+      div.innerHTML = '🛡️ Content Protection: Right-click is disabled';
+      const inject = () => document.body ? document.body.appendChild(div) : setTimeout(inject, 50);
+      inject();
+      const show = () => { div.classList.remove('show'); void div.offsetWidth; div.classList.add('show'); };
+      document.addEventListener('contextmenu', e => { e.preventDefault(); show(); });
+      document.onkeydown = e => {
+        if (e.key == 'F12' || (e.ctrlKey && e.shiftKey && e.key == 'I') || (e.ctrlKey && e.key == 'u')) { e.preventDefault(); show(); }
+      };
+    })();
+  </script>
   <style>
     /* Simple styles for the 404 content */
     .error-section {

@@ -11,12 +11,39 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta property="og:title" content="Receipt Generator - Professional PDF Batch Tool">
-    <meta property="og:description" content="The ultimate tool for brands and businesses to generate, batch export, and print high-quality PDF receipts with custom branding.">
-    <meta property="og:image" content="https://suahco4.online/pofolio-main/icon.png">
-    <meta property="og:url" content="https://suahco4.online/pofolio-main/Receipt%20Generator.html">
+    <meta property="og:description" content="The ultimate tool for schools and businesses to generate, batch export, and print high-quality PDF receipts with custom branding.">
+    <meta property="og:image" content="https://suahco4.online/icon.png">
+    <meta property="og:url" content="https://suahco4.online/Receipt%20Generator.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:image" content="https://suahco4.online/pofolio-main/icon.png">
+    <meta name="twitter:image" content="https://suahco4.online/icon.png">
+    <script>
+        (function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                #security-overlay {
+                    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                    background: rgba(15, 23, 42, 0.95); color: #f8fafc; padding: 16px 32px;
+                    border-radius: 12px; border: 1px solid #3b82f6; z-index: 100000;
+                    display: none; pointer-events: none; font-family: system-ui, -apple-system, sans-serif;
+                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); text-align: center;
+                }
+                #security-overlay.show { display: block; animation: overlay-fade 2s forwards; }
+                @keyframes overlay-fade { 0% { opacity: 0; } 15%, 85% { opacity: 1; } 100% { opacity: 0; } }
+            `;
+            document.head.appendChild(style);
+            const div = document.createElement('div');
+            div.id = 'security-overlay';
+            div.innerHTML = '🛡️ Content Protection: Right-click is disabled';
+            const inject = () => document.body ? document.body.appendChild(div) : setTimeout(inject, 50);
+            inject();
+            const show = () => { div.classList.remove('show'); void div.offsetWidth; div.classList.add('show'); };
+            document.addEventListener('contextmenu', e => { e.preventDefault(); show(); });
+            document.onkeydown = e => {
+                if (e.key == 'F12' || (e.ctrlKey && e.shiftKey && e.key == 'I') || (e.ctrlKey && e.key == 'u')) { e.preventDefault(); show(); }
+            };
+        })();
+    </script>
     <style>
         :root {
             --primary: #3b82f6;
@@ -45,6 +72,7 @@
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">📄 ReceiptGen</a>
             <div class="ms-auto">
+                <a href="#help" class="btn btn-link text-light text-decoration-none me-3">Help</a>
                 <a href="#download" class="btn btn-outline-light btn-sm">Download Now</a>
             </div>
         </div>
@@ -54,9 +82,9 @@
         <div class="container">
             <img src="icon.png" alt="Receipt Generator Icon" class="hero-icon">
             <h1 class="display-3 fw-bold mb-4">Generate Professional Receipts <br><span class="text-primary">In Seconds.</span></h1>
-            <p class="lead mb-5 text-secondary">The ultimate tool for brands and businesses to generate, batch export, and print high-quality PDF receipts with custom branding.</p>
+            <p class="lead mb-5 text-secondary">The ultimate tool for schools and businesses to generate, batch export, and print high-quality PDF receipts with custom branding.</p>
             <div class="d-flex justify-content-center gap-3" id="download">
-                <a href="https://drive.google.com/file/d/1PY8f4mUcyv-gRss5PX3zGnkksGB_Ar9X/view?usp=sharing" class="btn btn-primary btn-lg">Download (.zip) for Windows</a>
+                <a href="https://drive.google.com/file/d/PASTE_YOUR_NEW_ZIP_FILE_ID_HERE/view?usp=sharing" class="btn btn-primary btn-lg">Download (.zip) for Windows</a>
             </div>
         </div>
     </header>
@@ -72,7 +100,7 @@
             <div class="col-md-4">
                 <div class="feature-card">
                     <h3 class="h5 mb-3 text-primary">Custom Themes</h3>
-                    <p class="text-secondary">Choose from 20+ professional design presets and cover page styles to match your brand's identity.</p>
+                    <p class="text-secondary">Choose from 20+ professional design presets and cover page styles to match your school's brand.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -94,8 +122,20 @@
                         <div class="window-dot dot-yellow"></div>
                         <div class="window-dot dot-green"></div>
                     </div>
-                    <!-- Ensure screenshot.png is in the pofolio-main folder -->
                     <img src="Receipt Generator.png" alt="Receipt Generator App Interface" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="help" class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-4">Help & Tutorials</h2>
+                <p class="text-secondary mb-5">Master the Receipt Generator with our video guide. Learn how to customize your brand, manage sequential numbering, and export professional PDF batches effortlessly.</p>
+                <div class="ratio ratio-16x9 shadow-lg rounded overflow-hidden border border-secondary" style="background: var(--card-bg);">
+                    <!-- Replace VIDEO_ID with your actual YouTube video ID -->
+                    <iframe width="560" height="315" src="https://youtu.be/ygstUt-09Bk?si=zKb8yHAudM03qUoF" class="ratio-iframe title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -105,9 +145,9 @@
         <div class="container text-secondary">
             <p>&copy; 2026 Receipt Generator Tool. All rights reserved.</p>
             <div class="d-flex justify-content-center gap-4">
-                <a href="privacy.html" class="text-secondary text-decoration-none">Privacy Policy</a>
-                <a href="terms.html" class="text-secondary text-decoration-none">Terms of Service</a>
-                <a href="support.html" class="text-secondary text-decoration-none">Support</a>
+                <a href="pofolio-main/privacy.html" class="text-secondary text-decoration-none">Privacy Policy</a>
+                <a href="pofolio-main/terms.html" class="text-secondary text-decoration-none">Terms of Service</a>
+                <a href="pofolio-main/support.html" class="text-secondary text-decoration-none">Support</a>
             </div>
         </div>
     </footer>
