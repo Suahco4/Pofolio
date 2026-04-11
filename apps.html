@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Hub - Emmanuel Suah</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <script>
+    (function() {
+      const style = document.createElement('style');
+      style.textContent = `
+        #security-overlay {
+          position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+          background: rgba(15, 23, 42, 0.95); color: #f8fafc; padding: 16px 32px;
+          border-radius: 12px; border: 1px solid #3b82f6; z-index: 100000;
+          display: none; pointer-events: none; font-family: system-ui, -apple-system, sans-serif;
+          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); text-align: center;
+        }
+        #security-overlay.show { display: block; animation: overlay-fade 2s forwards; }
+        @keyframes overlay-fade { 0% { opacity: 0; } 15%, 85% { opacity: 1; } 100% { opacity: 0; } }
+      `;
+      document.head.appendChild(style);
+      const div = document.createElement('div');
+      div.id = 'security-overlay';
+      div.innerHTML = '🛡️ Content Protection: Right-click is disabled';
+      const inject = () => document.body ? document.body.appendChild(div) : setTimeout(inject, 50);
+      inject();
+      const show = () => { div.classList.remove('show'); void div.offsetWidth; div.classList.add('show'); };
+      document.addEventListener('contextmenu', e => { e.preventDefault(); show(); });
+      document.onkeydown = e => {
+        if (e.key == 'F12' || (e.ctrlKey && e.shiftKey && e.key == 'I') || (e.ctrlKey && e.key == 'u')) { e.preventDefault(); show(); }
+      };
+    })();
+  </script>
+
+  <style>
+    .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    .app-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .app-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+    }
+    .app-icon {
+        font-size: 3rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+    }
+    .app-card h3 { margin-bottom: 1rem; }
+    .app-card p {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        flex-grow: 1;
+        line-height: 1.6;
+    }
+    .search-container {
+        margin: 2rem auto;
+        max-width: 500px;
+    }
+    .search-input {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        border: 1px solid var(--border-color);
+        background: var(--card-bg);
+        color: var(--text-main);
+        font-family: inherit;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+    .search-input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container header-content">
+      <div class="logo">
+        <a href="index.html"><img src="logo.png" alt="Emmanuel Suah Logo" width="150" height="50"></a>
+      </div>
+      <nav class="main-nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#contact">Support</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle-btn" title="Toggle dark/light theme">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-sun"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>My Software Hub</h2>
+        <p>A curated collection of desktop applications and digital tools designed for efficiency.</p>
+      </div>
+
+      <div class="search-container">
+        <input type="text" id="app-search" class="search-input" placeholder="Search applications...">
+      </div>
+
+      <div id="no-results" class="fade-in" style="display: none; text-align: center; margin-top: 2rem; color: var(--text-muted);">
+        <p>No applications found matching your search.</p>
+      </div>
+
+      <div class="apps-grid">
+        <div class="app-card">
+          <div class="app-icon"><i class="fa-solid fa-mouse-pointer"></i></div>
+          <h3>Ripple Mouse Effect</h3>
+          <p>A lightweight utility adding beautiful visual ripples to your mouse interactions. Perfect for presentations and screen recordings.</p>
+          <a href="Ripple Mouse Effect.html" class="btn primary-btn">Explore App</a>
+        </div>
+
+        <div class="app-card">
+          <div class="app-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+          <h3>Receipt Generator Pro</h3>
+          <p>Professional desktop application for brands to generate, batch export, and print high-quality PDF receipts with custom branding.</p>
+          <a href="Receipt Generator.html" class="btn primary-btn">Explore App</a>
+        </div>
+
+        <div class="app-card" style="border-style: dashed; opacity: 0.6;">
+          <div class="app-icon"><i class="fa-solid fa-flask-vial"></i></div>
+          <h3>More Coming Soon</h3>
+          <p>I'm currently building new tools to simplify workflows. Check back soon for more releases!</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="current-year"></span> Emmanuel Suah. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('app-search');
+        const appCards = document.querySelectorAll('.app-card');
+        const noResults = document.getElementById('no-results');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            let hasResults = false;
+
+            appCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(term) || desc.includes(term)) {
+                    card.style.display = 'flex';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = hasResults ? 'none' : 'block';
+        });
+    });
+  </script>
+</body>
+</html>
