@@ -43,13 +43,20 @@
         padding: 2rem 1.5rem;
     }
     .lyric-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 1rem;
         padding: 2rem;
         margin-bottom: 2rem;
         box-shadow: var(--shadow-soft);
         position: relative;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .lyric-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
     }
     .lyric-header {
         border-bottom: 1px solid var(--border-color);
@@ -60,7 +67,8 @@
         align-items: flex-start;
     }
     .lyric-title {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
+        font-weight: 700;
         color: var(--accent);
         margin: 0;
     }
@@ -68,14 +76,21 @@
         color: var(--text-muted);
         font-size: 0.9rem;
         margin-top: 0.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
     .lyric-content {
         white-space: pre-wrap; /* Preserves line breaks in lyrics */
         font-family: 'Courier New', Courier, monospace;
         line-height: 1.8;
         color: var(--text-main);
+        font-size: 1.05rem;
     }
-    .download-btn {
+    .lyric-actions {
+        display: flex;
+        gap: 0.75rem;
+    }
+    .action-btn {
         background: none;
         border: none;
         color: var(--accent);
@@ -84,7 +99,7 @@
         opacity: 0.7;
         transition: opacity 0.2s;
     }
-    .download-btn:hover {
+    .action-btn:hover {
         opacity: 1;
     }
     /* Form Toggle */
@@ -198,6 +213,10 @@
 
     let allLyrics = []; // Cache for all fetched lyrics
 
+    // Load search term from session storage
+    const savedSearch = sessionStorage.getItem('lyricsSearch');
+    if (savedSearch) searchInput.value = savedSearch;
+
     // Toggle Form Visibility
     toggleBtn.addEventListener('click', () => {
         formSection.classList.toggle('show');
@@ -209,6 +228,9 @@
     // Render lyrics based on the current filter
     function renderLyrics() {
         const searchTerm = searchInput.value.toLowerCase();
+        // Save to session
+        sessionStorage.setItem('lyricsSearch', searchInput.value);
+
         const filteredLyrics = allLyrics.filter(song =>
             song.title.toLowerCase().includes(searchTerm)
         );
@@ -235,9 +257,14 @@
                         <h3 class="lyric-title">${song.title}</h3>
                         <div class="lyric-artist">by ${song.artist}</div>
                     </div>
-                    <button class="download-btn" onclick="downloadLyric('${song._id}')" title="Download Lyric">
-                        <i class="fa-solid fa-download"></i>
-                    </button>
+                    <div class="lyric-actions">
+                        <button class="action-btn" onclick="copySongLink('${song._id}')" title="Copy Link to Song">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                        <button class="action-btn" onclick="downloadLyric('${song._id}')" title="Download PDF">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="lyric-content">${song.content}</div>
             `;
@@ -304,6 +331,16 @@
             alert('Failed to save lyric');
         }
     });
+
+    // Share Link Functionality
+    function copySongLink(id) {
+        const url = window.location.origin + window.location.pathname + '#' + id;
+        navigator.clipboard.writeText(url).then(() => {
+            alert('Link copied to clipboard! You can now share this specific song.');
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+        });
+    }
 
     // Download Lyric
     function downloadLyric(id) {

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download | SUAHCO4 Advanced Network Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link rel="shortcut icon" href="icon.ico">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --color-bg: #030712;
+            --color-panel: #111827;
+            --color-border: #1f2937;
+            --color-accent: #3b82f6;
+            --color-accent-glow: rgba(59, 130, 246, 0.5);
+            --color-success: #10b981;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: #e5e7eb;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .crt-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9999;
+            opacity: 0.3;
+        }
+
+        .cyber-grid {
+            background-image: 
+                linear-gradient(rgba(31, 41, 55, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(31, 41, 55, 0.2) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
+        }
+
+        .sci-panel {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+
+        .sci-panel:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 0 20px var(--color-accent-glow);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating { animation: float 6s ease-in-out infinite; }
+
+        .glitch-text:hover {
+            text-shadow: 2px 0 var(--color-accent), -2px 0 #ff00c1;
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-500 selection:text-white">
+    <div class="crt-overlay"></div>
+    
+    <!-- Hero Section -->
+    <div class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20">
+        <div class="absolute inset-0 cyber-grid -z-10"></div>
+        
+        <!-- Header -->
+        <nav class="fixed top-0 w-full z-50 border-b border-gray-800 bg-gray-950/80 backdrop-blur-md px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="icon.ico" alt="Logo" class="w-8 h-8 object-contain">
+                <span class="text-xl font-black tracking-tighter text-white">SUAH<span class="text-blue-500">CO4</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 text-xs font-bold tracking-widest text-gray-400 uppercase">
+                <a href="#protocols" class="hover:text-blue-400 transition">Protocols</a>
+                <a href="#security" class="hover:text-blue-400 transition">Security</a>
+                <a href="#docs" class="hover:text-blue-400 transition">Documentation</a>
+                <a href="#updates" class="hover:text-blue-400 transition">Updates</a>
+                <a href="#demo" class="hover:text-blue-400 transition">Demo</a>
+            </div>
+            <a href="#download" class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-black px-6 py-2 rounded uppercase tracking-widest shadow-[0_0_15px_rgba(37,99,235,0.4)] transition-all">
+                Get v4.2.0
+            </a>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="text-center max-w-4xl">
+            <div class="inline-block px-3 py-1 border border-blue-500/30 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-bold tracking-[0.3em] uppercase mb-6 animate-pulse">
+                Next-Gen Peer-to-Peer Uplink
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black text-white tracking-tighter mb-6 glitch-text transition-all">
+                MONITOR <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-500">EVERYTHING.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Advanced network monitoring and real-time screen casting powered by low-latency WebRTC and end-to-end encryption.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <a href="#download" class="w-full md:w-auto px-10 py-4 bg-white text-black font-black rounded uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105 active:scale-95">
+                    Initialize Download
+                </a>
+                <div class="text-[10px] font-mono text-gray-500 tracking-widest">
+                    VER 4.2.0 / BUILD 2024.04 / STABLE
+                </div>
+            </div>
+        </div>
+
+        <!-- App Mockup Floating -->
+        <div class="mt-20 relative floating w-full max-w-5xl mx-auto">
+            <div class="sci-panel rounded-t-xl p-2 border-b-0">
+                <div class="flex gap-1.5 mb-2 px-2">
+                    <div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-500/50"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+                </div>
+                <div class="aspect-video bg-black rounded-lg overflow-hidden border border-gray-800 relative group">
+                    <img src="SUAHCO4 _ Advanced Network Monitor 4_13_2026 8_42_27 AM.png" alt="SUAHCO4 Platform Interface" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-blue-500/5 pointer-events-none"></div>
+                    <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                        <div class="space-y-1">
+                            <div class="h-1 w-24 bg-blue-500/30 rounded"></div>
+                            <div class="h-1 w-16 bg-gray-700 rounded"></div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-1">
+                            <div class="w-8 h-8 bg-gray-800/50 rounded border border-gray-700"></div>
+                            <div class="w-8 h-8 bg-gray-800/50 rounded border border-gray-700"></div>
+                            <div class="w-8 h-8 bg-gray-800/50 rounded border border-gray-700"></div>
+                            <div class="w-8 h-8 bg-blue-600/50 rounded border border-blue-500"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Grid -->
+    <section class="py-24 px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="sci-panel p-8 rounded-2xl">
+                <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center text-blue-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Ultra-Low Latency</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Proprietary WebRTC implementation ensures sub-50ms latency across global peer connections.</p>
+            </div>
+            <div class="sci-panel p-8 rounded-2xl">
+                <div class="w-12 h-12 bg-emerald-600/20 rounded-lg flex items-center justify-center text-emerald-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Military-Grade Encryption</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">AES-256 end-to-end encryption for all data and video streams. Your network remains your business.</p>
+            </div>
+            <div class="sci-panel p-8 rounded-2xl">
+                <div class="w-12 h-12 bg-purple-600/20 rounded-lg flex items-center justify-center text-purple-400 mb-6">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">Unlimited Scalability</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Monitor 1 to 100+ nodes simultaneously with dynamic grid layouts and automated health checks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demonstration Section -->
+    <section id="demo" class="py-24 px-8 max-w-5xl mx-auto border-t border-gray-800/50">
+        <div class="mb-12 text-center">
+            <h2 class="text-3xl font-black text-white tracking-tighter uppercase">System Demonstration</h2>
+            <p class="text-gray-500 mt-2">Watch the SUAHCO4 platform in action, demonstrating real-time monitoring and node management capabilities.</p>
+        </div>
+        <div class="sci-panel p-2 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+            <div class="aspect-video rounded-xl overflow-hidden border border-gray-800">
+                <iframe 
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="SUAHCO4 System Demonstration" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-24 bg-gray-900/40">
+        <div class="max-w-5xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">DEPLOY TO YOUR DEVICES</h2>
+                <p class="text-gray-500">Select your platform to begin deployment.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Windows -->
+                <div class="sci-panel p-6 rounded-xl flex flex-col items-center text-center">
+                    <svg class="w-12 h-12 text-gray-400 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1V11.7H0V3.449zm0 17.1L9.75 21.9V12.3H0v8.249zM10.5 2L24 0v11.7H10.5V2zm0 20l13.5 2V12.3H10.5V22z"/></svg>
+                    <h4 class="text-lg font-bold text-white mb-1">Windows</h4>
+                    <span class="text-[10px] text-gray-500 mb-6 font-mono">EXE / 64-BIT</span>
+                    <a href="https://drive.google.com/file/d/1779vb2K_qCcTApTlFWp8QiNFvqp4OCH2/view?usp=drive_link" target="_blank" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white rounded font-bold text-sm transition-all shadow-lg active:scale-95 text-center">
+                        DOWNLOAD .EXE
+                    </a>
+                </div>
+                
+                <!-- Android -->
+                <div class="sci-panel p-6 rounded-xl flex flex-col items-center text-center border-blue-500/50 shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+                    <svg class="w-12 h-12 text-white mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414C17.0454 15.3414 16.6591 14.9551 16.6591 14.4775C16.6591 13.9999 17.0454 13.6136 17.523 13.6136C18.0006 13.6136 18.3869 13.9999 18.3869 14.4775C18.3869 14.9551 18.0006 15.3414 17.523 15.3414ZM6.477 15.3414C5.9994 15.3414 5.6131 14.9551 5.6131 14.4775C5.6131 13.9999 5.9994 13.6136 6.477 13.6136C6.9546 13.6136 7.3409 13.9999 7.3409 14.4775C7.3409 14.9551 6.9546 15.3414 6.477 15.3414ZM17.875 10.125L19.75 6.875C19.875 6.625 19.75 6.375 19.5 6.25C19.25 6.125 19 6.25 18.875 6.5L17 9.75C15.5 8.875 13.875 8.375 12 8.375C10.125 8.375 8.5 8.875 7 9.75L5.125 6.5C5 6.25 4.75 6.125 4.5 6.25C4.25 6.375 4.125 6.625 4.25 6.875L6.125 10.125C2.875 11.875 0.625 15.125 0.125 19H23.875C23.375 15.125 21.125 11.875 17.875 10.125Z"/></svg>
+                    <h4 class="text-lg font-bold text-white mb-1">Android</h4>
+                    <span class="text-[10px] text-gray-500 mb-6 font-mono">APK / ARM64 & X86_64</span>
+                    <a href="PASTE_YOUR_ANDROID_DRIVE_LINK_HERE" target="_blank" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white rounded font-bold text-sm transition-all shadow-lg active:scale-95 text-center">
+                        COMING SOON !!!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protocols Section -->
+    <section id="protocols" class="py-24 px-8 max-w-7xl mx-auto border-t border-gray-800/50">
+        <div class="mb-12">
+            <h2 class="text-3xl font-black text-white tracking-tighter uppercase">Transmission Protocols</h2>
+            <div class="h-1 w-20 bg-blue-600 mt-2"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-gray-400 leading-relaxed">
+            <div class="space-y-4">
+                <p>The SUAHCO4 platform utilizes an advanced WebRTC implementation to facilitate high-performance, peer-to-peer data and video transmission. By establishing direct connections between nodes using STUN and TURN server infrastructure, we eliminate the need for centralized media servers, which significantly reduces latency and operational overhead.</p>
+                <p>The PeerJS protocol is leveraged for initial handshaking and peer discovery, ensuring that your network remains resilient even in complex NAT environments. This hybrid approach allows for seamless connectivity across diverse network topologies while maintaining the highest quality of service.</p>
+            </div>
+            <div class="sci-panel p-6 rounded-xl bg-blue-900/10 border-blue-500/20">
+                <h4 class="text-blue-400 font-bold mb-4 uppercase tracking-widest text-xs">Protocol Stack</h4>
+                <ul class="space-y-3 text-xs font-mono">
+                    <li class="flex justify-between"><span>WebRTC DataChannels</span><span class="text-green-500">ACTIVE</span></li>
+                    <li class="flex justify-between"><span>ICE / STUN Handshake</span><span class="text-green-500">STABLE</span></li>
+                    <li class="flex justify-between"><span>PeerJS Discovery</span><span class="text-green-500">ENCRYPTED</span></li>
+                    <li class="flex justify-between"><span>UDP/TCP Fallback</span><span class="text-yellow-500">AUTOMATIC</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="py-24 px-8 max-w-7xl mx-auto border-t border-gray-800/50">
+        <div class="mb-12 text-right">
+            <h2 class="text-3xl font-black text-white tracking-tighter uppercase">Security Architecture</h2>
+            <div class="h-1 w-20 bg-emerald-600 mt-2 ml-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-gray-400 leading-relaxed">
+            <div class="sci-panel p-6 rounded-xl bg-emerald-900/10 border-emerald-500/20 order-2 lg:order-1">
+                <h4 class="text-emerald-400 font-bold mb-4 uppercase tracking-widest text-xs">Encryption Standards</h4>
+                <div class="space-y-4 font-mono text-[10px]">
+                    <div class="p-3 bg-black/40 rounded">
+                        <div class="text-emerald-500 mb-1">Cipher: AES-256-GCM</div>
+                        <div class="opacity-60">Military-grade symmetric encryption for all media streams and data packets.</div>
+                    </div>
+                    <div class="p-3 bg-black/40 rounded">
+                        <div class="text-emerald-500 mb-1">Exchange: Diffie-Hellman</div>
+                        <div class="opacity-60">Secure key exchange protocols ensure forward secrecy for every unique session.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-4 order-1 lg:order-2">
+                <p>Security is the cornerstone of the SUAHCO4 architecture. Every stream and data packet is protected by industry-standard AES-256-GCM end-to-end encryption. Our zero-knowledge framework ensures that session keys are generated locally on your hardware and are never shared with our signaling servers.</p>
+                <p>Furthermore, the platform supports private network isolation, allowing users to operate entirely within local WiFi environments without external internet access. This "air-gap" compatibility makes SUAHCO4 ideal for sensitive industrial or secure research environments where data privacy is paramount.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="py-24 px-8 max-w-7xl mx-auto border-t border-gray-800/50">
+        <div class="mb-12">
+            <h2 class="text-3xl font-black text-white tracking-tighter uppercase">Operations Documentation</h2>
+            <div class="h-1 w-20 bg-purple-600 mt-2"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="space-y-4">
+                <h4 class="text-white font-bold uppercase text-sm">Deployment</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">Download the appropriate binary for your system. For Windows, execute the provided installer and follow the setup wizard. For Android, sideload the APK and grant the necessary camera and screen recording permissions when prompted by the OS to ensure full functionality.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-white font-bold uppercase text-sm">System Specs</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">The Windows client requires a 64-bit installation of Windows 10 or 11. The Android client requires an ARM64 device running Android 10 or higher. A stable network connection with at least 5Mbps upload for 1080p streaming is recommended for optimal performance.</p>
+            </div>
+            <div class="space-y-4">
+                <h4 class="text-white font-bold uppercase text-sm">Quick Start</h4>
+                <p class="text-gray-400 text-xs leading-relaxed">Launch the application and select 'Create Control Room' to act as a host. Share the generated unique Host ID with remote agents. Agents can then enter your ID and select 'Connect' to initiate the encrypted handshake and begin the monitoring sequence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updates Section -->
+    <section id="updates" class="py-24 px-8 max-w-7xl mx-auto border-t border-gray-800/50">
+        <div class="mb-12 text-right">
+            <h2 class="text-3xl font-black text-white tracking-tighter uppercase">Deployment Registry</h2>
+            <div class="h-1 w-20 bg-amber-500 mt-2 ml-auto"></div>
+        </div>
+        <div class="space-y-6">
+            <!-- v4.2.0 -->
+            <div class="sci-panel p-6 rounded-xl border-amber-500/20 bg-amber-900/5">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <span class="text-amber-500 font-mono text-xs font-bold uppercase tracking-widest">v4.2.0 / STABLE</span>
+                        <h4 class="text-white font-bold text-lg">Android Uplink & Encryption Hardening</h4>
+                    </div>
+                    <div class="text-[10px] font-mono text-gray-500 uppercase">2026.04.12</div>
+                </div>
+                <ul class="text-xs text-gray-400 space-y-2 list-disc list-inside leading-relaxed">
+                    <li>Official deployment of the Android .APK for mobile peer nodes.</li>
+                    <li>Hardened AES-256-GCM implementation for all high-bitrate media streams.</li>
+                    <li>Optimized socket heartbeat protocol to reduce idle power consumption.</li>
+                    <li>Added "Zero-Knowledge" key generation localized to the client hardware.</li>
+                    <li>Standardized branding across platform with high-fidelity .ico integration.</li>
+                    <li>Centralized download distribution via verified secure cloud uplink.</li>
+                </ul>
+            </div>
+
+            <!-- v4.1.0 -->
+            <div class="sci-panel p-6 rounded-xl border-gray-800 bg-gray-900/20 opacity-80">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <span class="text-gray-500 font-mono text-xs font-bold uppercase tracking-widest">v4.1.0</span>
+                        <h4 class="text-white font-bold text-lg">Telemetry API & UI Refresh</h4>
+                    </div>
+                    <div class="text-[10px] font-mono text-gray-600 uppercase">2026.02.28</div>
+                </div>
+                <ul class="text-xs text-gray-500 space-y-2 list-disc list-inside leading-relaxed">
+                    <li>Introduction of the REST-based Telemetry API for automated monitoring.</li>
+                    <li>Visual interface overhaul featuring the "Cyber-Grid" background engine.</li>
+                    <li>Enhanced ICE candidate gathering for improved connectivity in restricted NAT environments.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Protocol Section -->
+    <section id="privacy" class="py-24 px-8 max-w-7xl mx-auto border-t border-gray-800/50">
+        <div class="mb-12 text-right">
+            <h2 class="text-3xl font-black text-white tracking-tighter uppercase">Privacy Protocol</h2>
+            <div class="h-1 w-20 bg-emerald-600 mt-2 ml-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-gray-400 leading-relaxed">
+            <div class="sci-panel p-6 rounded-xl bg-emerald-900/10 border-emerald-500/20 order-2 lg:order-1 flex items-center justify-center">
+                <div class="text-center space-y-2">
+                    <div class="text-4xl font-black text-white opacity-20 uppercase tracking-[0.2em]">Zero Knowledge</div>
+                    <p class="text-[10px] font-mono text-emerald-500 uppercase">Data Sovereignty Guaranteed</p>
+                </div>
+            </div>
+            <div class="space-y-4 order-1 lg:order-2">
+                <p>The SUAHCO4 privacy framework is engineered around the core principle of data sovereignty. We operate under a strict zero-knowledge architecture, meaning that the platform does not possess the technical capability to intercept, view, or store your transmitted data. All encryption keys are generated locally on your workstation and are never transmitted to our signaling servers, ensuring that your communication remains strictly between authorized nodes.</p>
+                <p>Unlike centralized monitoring solutions, SUAHCO4 does not perform metadata harvesting or behavioral tracking. Our signaling infrastructure is utilized solely for the initial ICE candidate exchange and peer discovery phase. Once a connection is established, the data flows exclusively through a direct peer-to-peer tunnel, effectively isolating your private network activity from third-party oversight or external collection protocols.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Reference Section -->
+    <section id="api" class="py-24 px-8 max-w-7xl mx-auto border-t border-gray-800/50">
+        <div class="mb-12">
+            <h2 class="text-3xl font-black text-white tracking-tighter uppercase">API Reference</h2>
+            <div class="h-1 w-20 bg-blue-600 mt-2"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-gray-400 leading-relaxed">
+            <div class="space-y-4">
+                <p>For organizations requiring automated workstation management, SUAHCO4 provides a comprehensive REST-based API and WebSocket hook system. The API allows developers to programmatically initialize control rooms, query the health status of active nodes, and trigger remote system protocols across the distributed network. This allows for seamless integration into existing IT service management (ITSM) dashboards and automated security orchestration layers.</p>
+                <p>Our developer toolkit includes a standardized JSON telemetry format for all system logs and performance metrics. By leveraging our WebSocket event listeners, your internal applications can react in real-time to connection handshakes, high-latency alerts, or security heartbeat failures, providing a highly extensible foundation for custom industrial or research-grade monitoring solutions.</p>
+            </div>
+            <div class="sci-panel p-6 rounded-xl bg-gray-950 border-gray-800 font-mono text-[10px] space-y-4">
+                <div>
+                    <div class="text-blue-400 mb-1">// Initialize Host Protocol</div>
+                    <div class="text-gray-500">POST /api/v4/session/init</div>
+                    <div class="text-white mt-1">{ "auth_token": "TOKEN_ID", "mode": "host", "encryption": "AES-256-GCM" }</div>
+                </div>
+                <div class="pt-4 border-t border-gray-800">
+                    <div class="text-blue-400 mb-1">// Telemetry Query</div>
+                    <div class="text-gray-500">GET /api/v4/nodes/telemetry?id=NODE_ID</div>
+                    <div class="text-white mt-1">{ "status": "active", "bitrate": "8.2Mbps", "loss": "0.01%" }</div>
+                </div>
+                <div class="pt-4 border-t border-gray-800">
+                    <div class="text-emerald-500">>> SYSTEM_READY: API STACK LOADED</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-black/50">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3 opacity-50">
+                <span class="text-xs font-black tracking-tighter text-white">SUAH<span class="text-blue-500">CO4</span></span>
+                <span class="text-[10px] text-gray-600 font-mono">© <span id="copyright-year"></span> CYBERNETICS CORP / ALL RIGHTS RESERVED</span>
+            </div>
+            <div class="flex gap-8 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+                <a href="#privacy" class="hover:text-white transition">Privacy Protocol</a>
+                <a href="#api" class="hover:text-white transition">API Reference</a>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-[10px] text-gray-400 font-mono uppercase">Nodes Online: 4,209</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Auto-update copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Simple parallax for the mockup
+        window.addEventListener('scroll', () => {
+            const mockup = document.querySelector('.floating');
+            const speed = 0.1;
+            const rect = mockup.getBoundingClientRect();
+            if(rect.top < window.innerHeight && rect.bottom > 0) {
+                const yOffset = -(window.pageYOffset * speed);
+                mockup.style.transform = `translateY(${yOffset}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
