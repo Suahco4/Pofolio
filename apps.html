@@ -25,12 +25,13 @@
           box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); text-align: center;
         }
         #security-overlay.show { display: block; animation: overlay-fade 2s forwards; }
+        #security-overlay i { color: #3b82f6; margin-right: 8px; }
         @keyframes overlay-fade { 0% { opacity: 0; } 15%, 85% { opacity: 1; } 100% { opacity: 0; } }
       `;
       document.head.appendChild(style);
       const div = document.createElement('div');
       div.id = 'security-overlay';
-      div.innerHTML = '🛡️ Content Protection: Right-click is disabled';
+      div.innerHTML = '<i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Content Protection: Right-click is disabled';
       const inject = () => document.body ? document.body.appendChild(div) : setTimeout(inject, 50);
       inject();
       const show = () => { div.classList.remove('show'); void div.offsetWidth; div.classList.add('show'); };
