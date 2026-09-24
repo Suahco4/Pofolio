@@ -77,12 +77,13 @@
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3); text-align: center;
       }
       #security-overlay.show { display: block; animation: overlay-fade 2s forwards; }
+      #security-overlay i { display: block; font-size: 1.75rem; color: #3b82f6; }
       @keyframes overlay-fade { 0% { opacity: 0; } 15%, 85% { opacity: 1; } 100% { opacity: 0; } }
     `;
     document.head.appendChild(style);
     const div = document.createElement('div');
     div.id = 'security-overlay';
-    div.innerHTML = '🙏';
+    div.innerHTML = '<i class="fa-solid fa-hands-praying" aria-hidden="true"></i>';
     const inject = () => document.body ? document.body.appendChild(div) : setTimeout(inject, 50);
     inject();
     const show = () => { div.classList.remove('show'); void div.offsetWidth; div.classList.add('show'); };
@@ -100,7 +101,7 @@
 <header class=main-header>
 <div class="container header-content">
 <div class=logo>
-<img src=logo.png alt="Emmanuel Suah Logo" title="Emmanuel Suah Logo" width=150 height=50>
+<a href=#home aria-label="Emmanuel Suah - back to top"><img src=logo.png alt="Emmanuel Suah Logo" title="Emmanuel Suah Logo" width=150 height=50></a>
 </div>
 <nav class=main-nav aria-label="Main navigation">
 <button class=nav-toggle aria-label="Toggle navigation">
@@ -111,12 +112,11 @@
 <ul class=nav-links>
 <li><a href=#home>Home</a></li>
 <li><a href=#about>About</a></li>
-<li><a href=#photo>Photo</a></li>
+<li><a href=#occupations>What I Do</a></li>
 <li><a href=#projects>Projects</a></li>
 <li><a href=#lyrics>Lyrics</a></li>
-<li><a href=#occupations>Occupations</a></li>
-<li><a href="SUAHCO4 View.html">SUAHCO4 View</a></li>
 <li><a href=#contact>Contact</a></li>
+<li><a href="SUAHCO4 View.html" class=nav-cta><i class="fa-solid fa-display" aria-hidden=true></i>SUAHCO4 View</a></li>
 </ul>
 <button id=theme-toggle class=theme-toggle-btn aria-label="Toggle light and dark mode">
 <i class="fa-solid fa-moon"></i>
@@ -136,26 +136,26 @@
 I am based in Brewerville City, Montserrado County, Liberia. I combine technology and music to create solutions and meaningful worship experiences.
 </p>
 <div class=hero-actions>
-<a href=#occupations class="btn primary-btn">What I Do</a>
-<a href="apps.html" class="btn primary-btn btn-blue-accent">
-<i class="fa-solid fa-box-open"></i> Software Hub
+<a href=#projects class="btn primary-btn">
+<i class="fa-solid fa-briefcase" aria-hidden=true></i> View My Projects
 </a>
-<a href=#contact class="btn secondary-btn">Contact Me</a>
+<a href=apps.html class="btn primary-btn btn-blue-accent">
+<i class="fa-solid fa-box-open" aria-hidden=true></i> Software Hub
+</a>
+<a href=#contact class="btn secondary-btn">
+<i class="fa-solid fa-envelope" aria-hidden=true></i> Contact Me
+</a>
 </div>
 </div>
-<div class=hero-card>
-<h2>Quick Info</h2>
-<ul>
-<li><strong>Name:</strong> Emmanuel Suah</li>
-<li><strong>Location:</strong> Brewerville City, Montserrado County, Liberia</li>
-<li><strong>Phone:</strong> 0778662590</li>
-<li><strong>Email:</strong> <a href=mailto:info@suahco4.online">info@suahco4.online</a></li>
-<li><strong>Occupations:</strong> Programmer, Church Organist</li>
-</ul>
+<div class=hero-visual id=photo>
+<figure class="photo-frame hero-photo">
+<img src=avatar.jpg alt="Photo of Emmanuel Suah" title="Photo of Emmanuel Suah" id=profile-photo width=400 height=500 fetchpriority=high>
+</figure>
+<span class="hero-badge hero-badge--code"><i class="fa-solid fa-laptop-code" aria-hidden=true></i> Programmer</span>
+<span class="hero-badge hero-badge--music"><i class="fa-solid fa-music" aria-hidden=true></i> Church Organist</span>
 </div>
 </div>
 </section>
-<a href=#projects class="btn primary-btn">View My Project</a>
 <section id=about class="section fade-in-section">
 <div class=container>
 <div class=section-header>
@@ -172,39 +172,60 @@ Parallel to my passion for technology is my deep-seated love for music. As a chu
 </p>
 </div>
 <div class=about-details>
-<h3>Personal Details</h3>
+<h3><i class="fa-solid fa-id-card" aria-hidden=true></i> Personal Details</h3>
 <ul>
-<li><span>Full Name:</span> Emmanuel Suah</li>
-<li><span>Location:</span> Brewerville City, Montserrado County, Liberia</li>
-<li><span>Phone:</span> 0778662590</li>
-<li><span>Email:</span> <a href="mailto:info@suahco4.online">info@suahco4.online</a></li>
-<li><span>Occupation 1:</span> Programmer</li>
-<li><span>Occupation 2:</span> Church Organist</li>
+<li><span><i class="fa-solid fa-user" aria-hidden=true></i>Full Name:</span> Emmanuel Suah</li>
+<li><span><i class="fa-solid fa-location-dot" aria-hidden=true></i>Location:</span> Brewerville City, Montserrado County, Liberia</li>
+<li><span><i class="fa-solid fa-phone" aria-hidden=true></i>Phone:</span> <a href=tel:+231778662590>0778662590</a></li>
+<li><span><i class="fa-solid fa-envelope" aria-hidden=true></i>Email:</span> <a href="mailto:info@suahco4.online">info@suahco4.online</a></li>
+<li><span><i class="fa-solid fa-laptop-code" aria-hidden=true></i>Occupation 1:</span> Programmer</li>
+<li><span><i class="fa-solid fa-music" aria-hidden=true></i>Occupation 2:</span> Church Organist</li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<section id=photo class="section alt-bg fade-in-section">
+<section id=occupations class="section alt-bg fade-in-section">
 <div class=container>
 <div class=section-header>
-<h2>My Photo</h2>
-<p>A simple visual introduction.</p>
+<h2>What I Do</h2>
+<p>My main areas of service and work.</p>
 </div>
-<div class=photo-wrapper>
-<div class=photo-frame>
-<img src=avatar.jpg alt="Photo of Emmanuel Suah" title="Photo of Emmanuel Suah" id=profile-photo loading=lazy width=400 height=500>
-</div>
+<div class=cards-grid>
+<article class="card service-card">
+<div class=service-icon><i class="fa-solid fa-laptop-code" aria-hidden=true></i></div>
+<h3>Programmer</h3>
+<p>
+My focus is on front-end web development, where I specialize in turning ideas into responsive and interactive digital experiences. I am proficient in core web technologies and always eager to learn more.
+</p>
+<ul>
+<li><strong>Web Development:</strong> Building websites and applications using modern HTML, CSS, and JavaScript.</li>
+<li><strong>Problem Solving:</strong> Analyzing challenges to find and implement robust, scalable solutions.</li>
+<li><strong>Clean Code:</strong> Writing well-structured, maintainable code that follows best practices.</li>
+</ul>
+</article>
+<article class="card service-card">
+<div class=service-icon><i class="fa-solid fa-music" aria-hidden=true></i></div>
+<h3>Church Organist</h3>
+<p>
+Music is a core part of my life and service. My role as a church organist goes beyond simply playing notes; it's about creating an atmosphere for worship and reflection.
+</p>
+<ul>
+<li><strong>Worship Leadership:</strong> Selecting and playing hymns, preludes, and postludes that complement the service.</li>
+<li><strong>Accompaniment:</strong> Providing a solid musical foundation for choirs, soloists, and the congregation.</li>
+<li><strong>Musical Arrangement:</strong> Adapting pieces to suit the specific needs of a service or event.</li>
+</ul>
+</article>
 </div>
 </div>
 </section>
-<section id=projects class="section alt-bg fade-in-section">
+<section id=projects class="section fade-in-section">
 <div class=container>
 <div class=section-header>
 <h2>Some of My Projects</h2>
 <p>A few examples of the kind of work I do.</p>
 </div>
-<div class=cards-grid>
+<div class="cards-grid projects-grid">
 <div class=flip-card tabindex=0>
 <div class=flip-card-inner>
 <div class=flip-card-front>
@@ -313,7 +334,7 @@ A specialized viewer tool for the SUAHCO4 ecosystem, providing an enhanced visua
 </div>
 </div>
 </section>
-<section id=lyrics class="section fade-in-section">
+<section id=lyrics class="section alt-bg fade-in-section">
 <div class=container>
 <div class=section-header>
 <h2>Song Lyrics & Chords</h2>
@@ -323,43 +344,11 @@ A specialized viewer tool for the SUAHCO4 ecosystem, providing an enhanced visua
 <p class=grid-status-message>Loading latest lyrics...</p>
 </div>
 <div class=section-footer>
-<a href=lyrics.html class="btn primary-btn">View Full Collection</a>
+<a href=lyrics.html class="btn primary-btn"><i class="fa-solid fa-book-open" aria-hidden=true></i> View Full Collection</a>
 </div>
 </div>
 </section>
-<section id=occupations class="section fade-in-section">
-<div class=container>
-<div class=section-header>
-<h2>What I Do</h2>
-<p>My main areas of service and work.</p>
-</div>
-<div class=cards-grid>
-<article class=card>
-<h3>Programmer</h3>
-<p>
-My focus is on front-end web development, where I specialize in turning ideas into responsive and interactive digital experiences. I am proficient in core web technologies and always eager to learn more.
-</p>
-<ul>
-<li><strong>Web Development:</strong> Building websites and applications using modern HTML, CSS, and JavaScript.</li>
-<li><strong>Problem Solving:</strong> Analyzing challenges to find and implement robust, scalable solutions.</li>
-<li><strong>Clean Code:</strong> Writing well-structured, maintainable code that follows best practices.</li>
-</ul>
-</article>
-<article class=card>
-<h3>Church Organist</h3>
-<p>
-Music is a core part of my life and service. My role as a church organist goes beyond simply playing notes; it's about creating an atmosphere for worship and reflection.
-</p>
-<ul>
-<li><strong>Worship Leadership:</strong> Selecting and playing hymns, preludes, and postludes that complement the service.</li>
-<li><strong>Accompaniment:</strong> Providing a solid musical foundation for choirs, soloists, and the congregation.</li>
-<li><strong>Musical Arrangement:</strong> Adapting pieces to suit the specific needs of a service or event.</li>
-</ul>
-</article>
-</div>
-</div>
-</section>
-<section id=contact class="section alt-bg fade-in-section">
+<section id=contact class="section fade-in-section">
 <div class=container>
 <div class=section-header>
 <h2>Contact Me</h2>
@@ -368,10 +357,19 @@ Music is a core part of my life and service. My role as a church organist goes b
 <div class=contact-grid>
 <div class=contact-info>
 <h3>Details</h3>
-<ul>
-<li><strong>Phone:</strong> <a href=tel:+231778662590>0778662590</a></li>
-<li><strong>Email:</strong> <a href="mailto:contact_us@suahco4.online">contact_us@suahco4.online</a></li>
-<li><strong>Address:</strong> Brewerville City, Montserrado County, Liberia</li>
+<ul class=contact-list>
+<li>
+<span class=contact-icon><i class="fa-solid fa-phone" aria-hidden=true></i></span>
+<div><strong>Phone</strong><a href=tel:+231778662590>0778662590</a></div>
+</li>
+<li>
+<span class=contact-icon><i class="fa-solid fa-envelope" aria-hidden=true></i></span>
+<div><strong>Email</strong><a href="mailto:contact_us@suahco4.online">contact_us@suahco4.online</a></div>
+</li>
+<li>
+<span class=contact-icon><i class="fa-solid fa-location-dot" aria-hidden=true></i></span>
+<div><strong>Address</strong><span>Brewerville City, Montserrado County, Liberia</span></div>
+</li>
 </ul>
 <p>
 You can call, send an email, or leave a message using the form. The form shows a confirmation message in the browser.
@@ -399,6 +397,7 @@ You can call, send an email, or leave a message using the form. The form shows a
 <span class=error-message data-for=message></span>
 </div>
 <button type=submit class="btn primary-btn">
+<i class="fa-solid fa-paper-plane" aria-hidden=true></i>
 <span class=btn-text>Send Message</span>
 <span class=spinner></span>
 </button>
